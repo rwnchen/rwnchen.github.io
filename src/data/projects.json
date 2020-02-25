@@ -1,0 +1,34 @@
+[
+  {
+    "name": "name pending.",
+    "link": "https://name-pending.herokuapp.com",
+    "year": "2020",
+    "platform": "Web",
+    "role": "Fullstack Developer",
+    "description": "An e-commerce website that sells art prints."
+  },
+  {
+    "name": "Pokéwalk",
+    "link": "https://github.com/rwnchen/pokewalk",
+    "year": "2020",
+    "platform": "Mobile",
+    "role": "Solo Developer",
+    "description": "Hackathon project. A mobile game where players can walk around and catch Pokémon."
+  },
+  {
+    "name": "Wanderlust",
+    "link": "https://gh-wanderlust.now.sh",
+    "year": "2020",
+    "platform": "Web",
+    "role": "Fullstack Developer",
+    "description": "A travel website where users can find like-minded travelers and book trips together."
+  },
+  {
+    "name": "Functional Chess",
+    "link": "https://github.com/rwnchen/cs3110-functional-chess",
+    "year": "2018",
+    "platform": "PC",
+    "role": "Software Engineer",
+    "description": "An implementation of chess in OCaml."
+  }
+]

@@ -9,6 +9,7 @@ export const Theme = {
 
   borderWidth: 5, //px
   containerPadding: 1.2, //rem
+  divSpacing: 40, //vh
 };
 
 const GlobalStyle = createGlobalStyle`
@@ -24,7 +25,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Fira Code', monospace;
     font-weight: 400;
     color: ${props => props.theme.accentBright};
-    margin-bottom: 2.2rem;
+    margin-bottom: 3.2rem;
   }
 
   h2 {
@@ -32,7 +33,7 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 400;
     text-transform: uppercase;
     font-size: 1.4rem;
-    margin-bottom: .4rem;
+    margin-bottom: .2rem;
   }
 
   a, a:hover, a:visited {

@@ -29,14 +29,18 @@ const Layout = ({ children }) => {
 const ScrollContainer = props => {
   const [scrollDir, setScrollDir] = useState('down');
   const [lastScrollPos, setLastScrollPos] = useState(window.pageYOffset);
+  const [updateTick, setUpdate] = useState(true);
 
   const onScroll = e => {
-    const pos = e.currentTarget.scrollTop;
+    if (updateTick) {
+      const pos = e.currentTarget.scrollTop;
 
-    if (pos > lastScrollPos) setScrollDir('down');
-    else setScrollDir('up');
+      if (pos > lastScrollPos) setScrollDir('down');
+      else setScrollDir('up');
 
-    setLastScrollPos(pos <= 0 ? 0 : pos);
+      setLastScrollPos(pos <= 0 ? 0 : pos);
+      setUpdate(false);
+    } else setUpdate(true);
   };
 
   return (
@@ -75,7 +79,7 @@ const StyledScrollContainer = styled.div`
   > * {
     margin-top: ${props => props.theme.containerPadding}rem;
     /* margin-bottom: ${props => props.theme.containerPadding * 10}rem; */
-    margin-bottom: 60vh;
+    margin-bottom: ${props => props.theme.divSpacing}vh;
     scroll-snap-align: start;
     min-height: calc(
       100vh - ${props => props.theme.borderWidth * 2}px -

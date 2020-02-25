@@ -1,28 +1,49 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Project = () => {
+const Project = props => {
+  const p = props.project;
+
   return (
-    <div>
-      <h2>Project Name</h2>
+    <Wrapper>
+      <Hover>
+        <h2>/</h2>
+      </Hover>
       <ProjectInfo>
-        <a href="#">link</a> / 2xxx / platform / role
+        <h2>{p.name}</h2>
+        <Metadata>
+          <a href={p.link}>link</a> / {p.year} / {p.platform} / {p.role}
+        </Metadata>
+        <p>{p.description}</p>
       </ProjectInfo>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur.
-      </p>
-    </div>
+    </Wrapper>
   );
 };
 
 export default Project;
 
-const ProjectInfo = styled.p`
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+const ProjectInfo = styled.div``;
+
+const Hover = styled.div`
+  max-width: 0%;
+  margin-right: 1rem;
+  overflow: hidden;
+
+  ${Wrapper}:hover & {
+    max-width: 100%;
+  }
+
+  font-family: 'Fira Code', monospace;
+  color: ${props => props.theme.accentBright};
+`;
+
+export const Metadata = styled.p`
   font-size: 0.9rem;
   color: ${props => props.theme.accentSub};
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.6rem;
+  text-transform: lowercase;
 `;

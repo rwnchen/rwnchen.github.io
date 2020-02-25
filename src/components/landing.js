@@ -7,13 +7,15 @@ const Landing = () => {
       <h1>hello. i'm Rowena Chen, and i'm a frontend engineer.</h1>
       <ul>
         <li>
-          <a href="#">/ github</a>
+          <a href="https://github.com/rwnchen">/ github</a>
         </li>
         <li>
-          <a href="#">/ linkedin</a>
+          <a href="https://www.linkedin.com/in/rowena-chen/">/ linkedin</a>
         </li>
         <li>
-          <a href="#">/ resume</a>
+          <a href="/Rowena_Chen.pdf" target="blank">
+            / resume
+          </a>
         </li>
       </ul>
     </Wrapper>

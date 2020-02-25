@@ -2,15 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Project from './singleProject';
+import projects from '../data/projects.json';
 
 const Projects = () => {
   return (
     <Wrapper>
       <h1>/projects</h1>
       <ProjectContainer>
-        <Project />
-        <Project />
-        <Project />
+        {projects.map((p, i) => (
+          <Project key={i} project={p} />
+        ))}
       </ProjectContainer>
     </Wrapper>
   );
@@ -25,16 +26,13 @@ const Wrapper = styled.div`
 
   ::after {
     content: '';
-    height: 80vh;
+    height: ${props => props.theme.divSpacing}vh;
   }
 `;
 
 const ProjectContainer = styled.div`
-  /* scroll-snap-type: x proximity; */
-
   > div {
-    margin-bottom: 2.8rem;
-    /* scroll-snap-align: start; */
+    margin-bottom: 2.4rem;
 
     &:last-child {
       margin-bottom: 0;
