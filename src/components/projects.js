@@ -21,14 +21,20 @@ export default Projects;
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  margin-bottom: 0;
+
+  ::after {
+    content: '';
+    height: 80vh;
+  }
 `;
 
 const ProjectContainer = styled.div`
-  scroll-snap-type: x proximity;
+  /* scroll-snap-type: x proximity; */
 
   > div {
     margin-bottom: 2.8rem;
-    scroll-snap-align: start;
+    /* scroll-snap-align: start; */
 
     &:last-child {
       margin-bottom: 0;

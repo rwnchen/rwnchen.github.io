@@ -5,7 +5,7 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled, { ThemeProvider } from 'styled-components';
 
@@ -26,6 +26,26 @@ const Layout = ({ children }) => {
   );
 };
 
+const ScrollContainer = props => {
+  const [scrollDir, setScrollDir] = useState('down');
+  const [lastScrollPos, setLastScrollPos] = useState(window.pageYOffset);
+
+  const onScroll = e => {
+    const pos = e.currentTarget.scrollTop;
+
+    if (pos > lastScrollPos) setScrollDir('down');
+    else setScrollDir('up');
+
+    setLastScrollPos(pos <= 0 ? 0 : pos);
+  };
+
+  return (
+    <StyledScrollContainer onScroll={onScroll} direction={scrollDir}>
+      {props.children}
+    </StyledScrollContainer>
+  );
+};
+
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
 };
@@ -41,20 +61,21 @@ const MainView = styled.div`
   background-color: #7755f0;
 `;
 
-const ScrollContainer = styled.div`
+const StyledScrollContainer = styled.div`
   width: calc(100% - ${props => props.theme.borderWidth * 2}px);
   height: calc(100% - ${props => props.theme.borderWidth * 2}px);
   padding-left: ${props => props.theme.containerPadding}rem;
   padding-right: ${props => props.theme.containerPadding}rem;
   background-color: #f5fdff;
   overflow-y: scroll;
-  scroll-snap-type: y mandatory;
+  scroll-snap-type: y ${props =>
+    props.direction === 'down' ? 'mandatory' : 'proximity'};
   scroll-padding: ${props => props.theme.containerPadding}rem;
 
   > * {
     margin-top: ${props => props.theme.containerPadding}rem;
     /* margin-bottom: ${props => props.theme.containerPadding * 10}rem; */
-    margin-bottom: 100vh;
+    margin-bottom: 60vh;
     scroll-snap-align: start;
     min-height: calc(
       100vh - ${props => props.theme.borderWidth * 2}px -
