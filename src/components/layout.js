@@ -48,9 +48,16 @@ const ScrollContainer = styled.div`
   padding-right: ${props => props.theme.containerPadding}rem;
   background-color: #f5fdff;
   overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-padding: ${props => props.theme.containerPadding}rem;
 
   > * {
     margin-top: ${props => props.theme.containerPadding}rem;
-    margin-bottom: ${props => props.theme.containerPadding * 3}rem;
+    margin-bottom: ${props => props.theme.containerPadding * 10}rem;
+    scroll-snap-align: start;
+
+    &:last-child {
+      margin-bottom: ${props => props.theme.containerPadding}rem;
+    }
   }
 `;

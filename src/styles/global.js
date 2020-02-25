@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 
 export const Theme = {
   white: '#F5FDFF',
-  black: '＃3A3F4E',
+  black: '#3A3F4E',
   accentBright: '#7755F0',
   accentSub: '#ADA9E1',
   accentAlt: '#5dddb5',
