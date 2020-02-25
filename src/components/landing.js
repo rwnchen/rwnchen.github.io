@@ -31,4 +31,8 @@ const Wrapper = styled.div`
     100vh - ${props => props.theme.borderWidth * 2}px -
       ${props => props.theme.containerPadding * 2}rem
   );
+
+  && a {
+    color: ${props => props.theme.accentSub};
+  }
 `;

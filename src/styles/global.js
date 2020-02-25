@@ -24,12 +24,21 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Fira Code', monospace;
     font-weight: 400;
     color: ${props => props.theme.accentBright};
+    margin-bottom: 2.2rem;
+  }
+
+  h2 {
+    font-family: 'Fira Code', monospace;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    margin-bottom: .4rem;
   }
 
   a, a:hover, a:visited {
     text-decoration: none;
     font-family: 'Fira Code', monospace;
-    color: ${props => props.theme.accentSub};
+    color: ${props => props.theme.accentBright};
   }
 
   ul {

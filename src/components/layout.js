@@ -53,8 +53,13 @@ const ScrollContainer = styled.div`
 
   > * {
     margin-top: ${props => props.theme.containerPadding}rem;
-    margin-bottom: ${props => props.theme.containerPadding * 10}rem;
+    /* margin-bottom: ${props => props.theme.containerPadding * 10}rem; */
+    margin-bottom: 100vh;
     scroll-snap-align: start;
+    min-height: calc(
+      100vh - ${props => props.theme.borderWidth * 2}px -
+        ${props => props.theme.containerPadding * 2}rem
+    );
 
     &:last-child {
       margin-bottom: ${props => props.theme.containerPadding}rem;
