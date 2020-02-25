@@ -44,6 +44,6 @@ const Hover = styled.div`
 export const Metadata = styled.p`
   font-size: 0.9rem;
   color: ${props => props.theme.accentSub};
-  margin-bottom: 0.6rem;
+  margin-bottom: 0;
   text-transform: lowercase;
 `;

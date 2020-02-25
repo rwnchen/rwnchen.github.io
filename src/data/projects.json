@@ -4,7 +4,8 @@
     "link": "https://name-pending.herokuapp.com",
     "year": "2020",
     "platform": "Web",
-    "role": "Fullstack Developer",
+    "role": "Fullstack Engineer",
+    "stack": ["React", "Node.js"],
     "description": "An e-commerce website that sells art prints."
   },
   {
@@ -12,7 +13,8 @@
     "link": "https://github.com/rwnchen/pokewalk",
     "year": "2020",
     "platform": "Mobile",
-    "role": "Solo Developer",
+    "role": "Solo Engineer",
+    "stack": ["React Native"],
     "description": "Hackathon project. A mobile game where players can walk around and catch Pokémon."
   },
   {
@@ -20,7 +22,8 @@
     "link": "https://gh-wanderlust.now.sh",
     "year": "2020",
     "platform": "Web",
-    "role": "Fullstack Developer",
+    "role": "Fullstack Engineer",
+    "stack": ["React", "Node.js"],
     "description": "A travel website where users can find like-minded travelers and book trips together."
   },
   {
@@ -29,6 +32,25 @@
     "year": "2018",
     "platform": "PC",
     "role": "Software Engineer",
-    "description": "An implementation of chess in OCaml."
+    "stack": ["OCaml"],
+    "description": "An implementation of chess with networked multiplayer support. Built in OCaml."
+  },
+  {
+    "name": "Marsicans Fansite",
+    "link": "https://marsicans-fansite.herokuapp.com",
+    "year": "2017",
+    "platform": "Web",
+    "role": "Frontend Engineer",
+    "stack": ["PHP"],
+    "description": "A fansite dedicated to English indie pop band Marsicans."
+  },
+  {
+    "name": "Game Archive",
+    "link": "https://my-game-archive.herokuapp.com/",
+    "year": "2017",
+    "platform": "Web",
+    "role": "Frontend Engineer",
+    "stack": ["PHP"],
+    "description": "A website to keep track of a personal game library."
   }
 ]
