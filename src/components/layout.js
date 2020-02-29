@@ -62,6 +62,7 @@ const MainView = styled.div`
   align-items: center;
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
   background-color: #7755f0;
 `;
 
@@ -80,6 +81,7 @@ const StyledScrollContainer = styled.div`
     margin-top: ${props => props.theme.containerPadding}rem;
     /* margin-bottom: ${props => props.theme.containerPadding * 10}rem; */
     margin-bottom: ${props => props.theme.divSpacing}vh;
+
     scroll-snap-align: start;
     min-height: calc(
       100vh - ${props => props.theme.borderWidth * 2}px -
@@ -89,5 +91,20 @@ const StyledScrollContainer = styled.div`
     &:last-child {
       margin-bottom: ${props => props.theme.containerPadding}rem;
     }
+
+    @media (min-width: ${props => props.theme.bpSm}px) {
+      margin-left: calc(100% - ${props => props.theme.contentWidth}ch);
+    }
+
+    @media (min-width: ${props => props.theme.bpMd}px) {
+      margin-left: calc(100% - ${props => props.theme.contentWidth}ch - 10vw);
+      margin-right: 10vw;
+    }
+
+    @media (min-width: ${props => props.theme.bpMd}px) {
+      margin-left: calc(100% - ${props => props.theme.contentWidthLg}ch - 20vw);
+      margin-right: 20vw;
+    }
   }
+
 `;

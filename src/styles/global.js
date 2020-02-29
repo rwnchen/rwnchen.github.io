@@ -10,11 +10,21 @@ export const Theme = {
   borderWidth: 5, //px
   containerPadding: 1.2, //rem
   divSpacing: 40, //vh
+
+  transitions: '0.3s ease',
+
+  contentWidth: 50, //ch
+  contentWidthLg: 70,
+  bpSm: 600, //px
+  bpMd: 980, //px
+  bpLg: 1400, //px
 };
 
 const GlobalStyle = createGlobalStyle`
   html,
   body {
+    width: 100%;
+    overflow: hidden;
     margin: 0 !important;
     padding: 0;
     font-family: 'Work Sans', sans-serif;
@@ -39,8 +49,18 @@ const GlobalStyle = createGlobalStyle`
   a, a:hover, a:visited {
     text-decoration: none;
     font-family: 'Fira Code', monospace;
-    color: ${props => props.theme.accentBright};
   }
+
+  a, a:visited {
+    position: relative;
+    color: ${props => props.theme.accentBright};
+    transition: color ${props => props.theme.transitions};
+
+    &:hover {
+      color: ${props => props.theme.accentAlt} !important;
+    }
+  }
+
 
   ul {
     list-style-type: none;

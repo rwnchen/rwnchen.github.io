@@ -22,7 +22,8 @@ export default Projects;
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 0;
+  padding-top: 5ch;
+  margin-bottom: 0 !important;
 
   ::after {
     content: '';
@@ -30,12 +31,16 @@ const Wrapper = styled.div`
   }
 `;
 
-const ProjectContainer = styled.div`
+export const ProjectContainer = styled.div`
   > div {
     margin-bottom: 2.4rem;
 
     &:last-child {
       margin-bottom: 0;
     }
+  }
+
+  @media (min-width: ${props => props.theme.bpSm}px) {
+    margin-left: 5ch;
   }
 `;

@@ -4,20 +4,22 @@ import styled from 'styled-components';
 const Landing = () => {
   return (
     <Wrapper>
-      <h1>hello. i'm Rowena Chen, and i'm a frontend engineer.</h1>
-      <ul>
-        <li>
-          <a href="https://github.com/rwnchen">/ github</a>
-        </li>
-        <li>
-          <a href="https://www.linkedin.com/in/rowena-chen/">/ linkedin</a>
-        </li>
-        <li>
-          <a href="/Rowena_Chen.pdf" target="blank">
-            / resume
-          </a>
-        </li>
-      </ul>
+      <div>
+        <h1>hello. i'm Rowena Chen, and i'm a frontend engineer.</h1>
+        <ul>
+          <li>
+            <a href="https://github.com/rwnchen">/ github</a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/rowena-chen/">/ linkedin</a>
+          </li>
+          <li>
+            <a href="/Rowena_Chen.pdf" target="blank">
+              / resume
+            </a>
+          </li>
+        </ul>
+      </div>
     </Wrapper>
   );
 };
@@ -36,5 +38,14 @@ const Wrapper = styled.div`
 
   && a {
     color: ${props => props.theme.accentSub};
+  }
+
+  @media (min-width: ${props => props.theme.bpSm}px) {
+    margin-left: 5ch !important;
+
+    div {
+      width: ${props => props.theme.contentWidth}ch;
+      margin-bottom: 5ch;
+    }
   }
 `;

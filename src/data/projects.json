@@ -34,23 +34,5 @@
     "role": "Software Engineer",
     "stack": ["OCaml"],
     "description": "An implementation of chess with networked multiplayer support. Built in OCaml."
-  },
-  {
-    "name": "Marsicans Fansite",
-    "link": "https://marsicans-fansite.herokuapp.com",
-    "year": "2017",
-    "platform": "Web",
-    "role": "Frontend Engineer",
-    "stack": ["PHP"],
-    "description": "A fansite dedicated to English indie pop band Marsicans."
-  },
-  {
-    "name": "Game Archive",
-    "link": "https://my-game-archive.herokuapp.com/",
-    "year": "2017",
-    "platform": "Web",
-    "role": "Frontend Engineer",
-    "stack": ["PHP"],
-    "description": "A website to keep track of a personal game library."
   }
 ]
