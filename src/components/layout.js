@@ -33,7 +33,7 @@ class ScrollContainer extends React.Component {
     super(props);
     this.state = {
       scrollDir: 'down',
-      lastScrollPos: window.pageYOffset,
+      lastScrollPos: 0,
     };
 
     this.container = React.createRef();
@@ -41,6 +41,10 @@ class ScrollContainer extends React.Component {
     this.onScroll = this.onScroll.bind(this);
     this.scrollToTop = this.scrollToTop.bind(this);
     this.scrollToProjects = this.scrollToProjects.bind(this);
+  }
+
+  componentDidMount() {
+    this.setState({ lastScrollPos: window.pageYOffset });
   }
 
   onScroll = e => {
