@@ -34,6 +34,7 @@ class ScrollContainer extends React.Component {
     this.state = {
       scrollDir: 'down',
       lastScrollPos: 0,
+      windowHeight: 0,
     };
 
     this.container = React.createRef();
@@ -44,7 +45,10 @@ class ScrollContainer extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({ lastScrollPos: window.pageYOffset });
+    this.setState({
+      lastScrollPos: window.pageYOffset,
+      windowHeight: window.innerHeight,
+    });
   }
 
   onScroll = e => {
@@ -82,7 +86,7 @@ class ScrollContainer extends React.Component {
       >
         {this.props.children.slice(0, 2)}
         <Nav
-          scrolled={this.state.lastScrollPos > window.innerHeight * 0.7}
+          scrolled={this.state.lastScrollPos > this.state.windowHeight * 0.7}
           scrollToTop={this.scrollToTop}
           scrollToProjects={this.scrollToProjects}
         />
