@@ -33,7 +33,11 @@ const Misc = () => {
 export default Misc;
 
 const Wrapper = styled.div`
-  padding-top: 5ch;
+  padding-top: 1ch;
+
+  @media (min-width: ${props => props.theme.bpSm}px) {
+    padding-top: 5ch;
+  }
 `;
 
 const MiscItem = styled.div``;

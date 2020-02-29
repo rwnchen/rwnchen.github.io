@@ -89,12 +89,13 @@ class ScrollContainer extends React.Component {
 }
 
 const Nav = props => {
-  const scrolled = props.scrollPos > window.innerHeight / 2;
+  const scrolled = props.scrollPos > window.innerHeight * 0.7;
   const scrollOnClick = () =>
     scrolled ? props.scrollToTop() : props.scrollToProjects();
   return (
     <NavWrapper scrolled={scrolled}>
       <ul>
+        <Name scrolled={scrolled}>Rowena Chen</Name>
         <li>
           <a href="https://github.com/rwnchen">/ github</a>
         </li>
@@ -139,26 +140,22 @@ const StyledScrollContainer = styled.div`
   background-color: #f5fdff;
 
   overflow-y: scroll;
-  scroll-snap-type: y ${props =>
-    props.direction === 'down' ? 'mandatory' : 'proximity'};
-  scroll-padding: ${props => props.theme.containerPadding}rem;
+  scroll-snap-type: y
+    ${props => (props.direction === 'down' ? 'mandatory' : 'proximity')};
 
   > * {
     margin-top: ${props => props.theme.containerPadding}rem;
-    /* margin-bottom: ${props => props.theme.containerPadding * 10}rem; */
     margin-bottom: ${props => props.theme.divSpacing}vh;
 
     scroll-snap-align: start;
-    min-height: calc(
-      100vh - ${props => props.theme.borderWidth * 2}px -
-        ${props => props.theme.containerPadding * 2}rem
-    );
+    min-height: calc(100vh - ${props => props.theme.borderWidth * 2}px);
 
     &:last-child {
       margin-bottom: ${props => props.theme.containerPadding}rem;
     }
 
     @media (min-width: ${props => props.theme.bpSm}px) {
+      scroll-padding: ${props => props.theme.containerPadding}rem;
       margin-left: calc(100% - ${props => props.theme.contentWidth}ch);
     }
 
@@ -177,21 +174,58 @@ const StyledScrollContainer = styled.div`
 const NavWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   position: sticky;
-  top: 0;
-  max-height: 100%;
-  min-height: 0px;
+  top: -9rem;
+  height: 12rem;
+  min-height: 0;
+  scroll-margin: -100vh;
 
   ul {
-    height: ${props => (props.scrolled ? '0' : '6')}rem;
-    margin-bottom: 1rem;
+    height: ${props => (props.scrolled ? '0' : '7')}rem;
     opacity: ${props => (props.scrolled ? '0' : '1')};
     overflow: hidden;
     transition: all ${props => props.theme.transitions};
   }
 
   @media (min-width: ${props => props.theme.bpSm}px) {
+    top: -6rem;
     margin-left: 5ch;
+    scroll-margin: -60vh;
+  }
+
+  @media (min-width: ${props => props.theme.bpMd}px) {
+    top: 5ch;
+    ul {
+      height: 15rem !important;
+      opacity: 1;
+    }
+
+    & > ul > li > a {
+      color: ${props =>
+        props.scrolled ? props.theme.accentSub : props.theme.accentBright};
+    }
+  }
+
+  @media (min-width: ${props => props.theme.bpLg}px) {
+    top: 5ch;
+    margin-left: 5ch;
+  }
+`;
+
+const Name = styled.li`
+  max-height: 0;
+  width: 7ch;
+  margin: 0;
+  margin-bottom: 0.8rem;
+  overflow: hidden;
+  font-size: 1.4rem;
+  font-family: 'Fira Code', monospace;
+  color: ${props => props.theme.accentBright};
+  transition: all ${props => props.theme.transition};
+
+  @media (min-width: ${props => props.theme.bpMd}px) {
+    max-height: ${props => (props.scrolled ? '6' : '0')}rem;
   }
 `;
 

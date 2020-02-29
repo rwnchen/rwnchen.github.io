@@ -22,12 +22,16 @@ export default Projects;
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding-top: 5ch;
+  padding-top: 1ch;
   margin-bottom: 0 !important;
 
   ::after {
     content: '';
     height: ${props => props.theme.divSpacing}vh;
+  }
+
+  @media (min-width: ${props => props.theme.bpSm}px) {
+    padding-top: 5ch;
   }
 `;
 

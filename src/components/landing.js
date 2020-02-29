@@ -21,7 +21,7 @@ const Wrapper = styled.div`
   margin-bottom: 0 !important;
   min-height: calc(
     100vh - ${props => props.theme.borderWidth * 2}px -
-      ${props => props.theme.containerPadding * 2}rem - 6rem - 5ch
+      ${props => props.theme.containerPadding * 2}rem - 8rem - 5ch
   );
 
   h1 {
@@ -36,11 +36,6 @@ const Wrapper = styled.div`
     margin-left: 5ch !important;
     /* padding-bottom: calc(6rem + 5ch); */
 
-    min-height: calc(
-      100vh - ${props => props.theme.borderWidth * 2}px -
-        ${props => props.theme.containerPadding * 2}rem - 6rem - 10ch
-    );
-
     div {
       width: ${props => props.theme.contentWidth}ch;
     }
@@ -50,5 +45,12 @@ const Wrapper = styled.div`
         margin-bottom: 0;
       }
     }
+  }
+
+  @media (min-width: ${props => props.theme.bpSm}px) {
+    min-height: calc(
+      100vh - ${props => props.theme.borderWidth * 2}px -
+        ${props => props.theme.containerPadding * 2}rem - 10rem - 10ch
+    );
   }
 `;
