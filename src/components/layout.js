@@ -7,13 +7,15 @@
 
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import styled, { ThemeProvider } from 'styled-components';
+import styled, { ThemeProvider, keyframes } from 'styled-components';
 
 import 'typeface-fira-code';
 import 'typeface-work-sans';
 
 import '../styles/layout.css';
 import GlobalStyle, { Theme } from '../styles/global';
+
+import { Arrow } from './arrow';
 
 const Layout = ({ children }) => {
   return (
@@ -26,27 +28,88 @@ const Layout = ({ children }) => {
   );
 };
 
-const ScrollContainer = props => {
-  const [scrollDir, setScrollDir] = useState('down');
-  const [lastScrollPos, setLastScrollPos] = useState(window.pageYOffset);
-  const [updateTick, setUpdate] = useState(true);
+class ScrollContainer extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      scrollDir: 'down',
+      lastScrollPos: window.pageYOffset,
+    };
 
-  const onScroll = e => {
-    if (updateTick) {
-      const pos = e.currentTarget.scrollTop;
+    this.container = React.createRef();
 
-      if (pos > lastScrollPos) setScrollDir('down');
-      else setScrollDir('up');
+    this.onScroll = this.onScroll.bind(this);
+    this.scrollToTop = this.scrollToTop.bind(this);
+    this.scrollToProjects = this.scrollToProjects.bind(this);
+  }
 
-      setLastScrollPos(pos <= 0 ? 0 : pos);
-      setUpdate(false);
-    } else setUpdate(true);
+  onScroll = e => {
+    const pos = e.currentTarget.scrollTop;
+
+    if (pos > this.state.lastScrollPos) this.setState({ scrollDir: 'down' });
+    else this.setState({ scrollDir: 'up' });
+
+    this.setState({ lastScrollPos: pos <= 0 ? 0 : pos });
   };
 
+  scrollToTop = () => {
+    this.container.current.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+  };
+
+  scrollToProjects = () => {
+    console.log('here');
+    this.container.current.scrollTo({
+      top: 1.4 * window.innerHeight,
+      left: 0,
+      behavior: 'smooth',
+    });
+  };
+
+  render() {
+    return (
+      <StyledScrollContainer
+        ref={this.container}
+        onScroll={this.onScroll}
+        direction={this.state.scrollDir}
+      >
+        <Nav
+          scrollPos={this.state.lastScrollPos}
+          scrollToTop={this.scrollToTop}
+          scrollToProjects={this.scrollToProjects}
+        />
+        {this.props.children}
+      </StyledScrollContainer>
+    );
+  }
+}
+
+const Nav = props => {
+  const scrolled = props.scrollPos > window.innerHeight / 2;
+  const scrollOnClick = () =>
+    scrolled ? props.scrollToTop() : props.scrollToProjects();
   return (
-    <StyledScrollContainer onScroll={onScroll} direction={scrollDir}>
-      {props.children}
-    </StyledScrollContainer>
+    <NavWrapper scrolled={scrolled}>
+      <ul>
+        <li>
+          <a href="https://github.com/rwnchen">/ github</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/rowena-chen/">/ linkedin</a>
+        </li>
+        <li>
+          <a href="/Rowena_Chen.pdf" target="blank">
+            / resume
+          </a>
+        </li>
+      </ul>
+      <ArrowContainer scrolled={scrolled} onClick={scrollOnClick}>
+        <Arrow />
+      </ArrowContainer>
+    </NavWrapper>
   );
 };
 
@@ -67,11 +130,13 @@ const MainView = styled.div`
 `;
 
 const StyledScrollContainer = styled.div`
+  position: relative;
   width: calc(100% - ${props => props.theme.borderWidth * 2}px);
   height: calc(100% - ${props => props.theme.borderWidth * 2}px);
   padding-left: ${props => props.theme.containerPadding}rem;
   padding-right: ${props => props.theme.containerPadding}rem;
   background-color: #f5fdff;
+
   overflow-y: scroll;
   scroll-snap-type: y ${props =>
     props.direction === 'down' ? 'mandatory' : 'proximity'};
@@ -101,10 +166,52 @@ const StyledScrollContainer = styled.div`
       margin-right: 10vw;
     }
 
-    @media (min-width: ${props => props.theme.bpMd}px) {
+    @media (min-width: ${props => props.theme.bpLg}px) {
       margin-left: calc(100% - ${props => props.theme.contentWidthLg}ch - 20vw);
       margin-right: 20vw;
     }
   }
-
 `;
+
+const NavWrapper = styled.div`
+  position: fixed;
+  bottom: 1ch;
+
+  margin: 0;
+  max-height: 100%;
+  min-height: 0px;
+
+  && a {
+    color: ${props => props.theme.accentSub} !important;
+  }
+
+  ul {
+    height: ${props => (props.scrolled ? '0' : '6')}rem;
+    margin-bottom: 1rem;
+    opacity: ${props => (props.scrolled ? '0' : '1')};
+    overflow: hidden;
+    transition: all ${props => props.theme.transitions};
+  }
+`;
+
+const ArrowContainer = styled.div`
+  width: 3ch;
+  cursor: pointer;
+
+  svg {
+    width: 100%;
+    animation: ${props => changeColor(props.scrolled, props.theme)} 2s linear
+      alternate infinite;
+    transform: rotate(${props => (props.scrolled ? 180 : 0)}deg);
+    transition: all ${props => props.theme.transitions};
+  }
+`;
+
+const changeColor = (scrolled, theme) => keyframes`
+    from {
+      fill: ${scrolled ? theme.accentAlt : theme.accentSub};
+    }
+    to {
+      fill: ${scrolled ? theme.accentBright : theme.accentSub};
+    }
+  `;

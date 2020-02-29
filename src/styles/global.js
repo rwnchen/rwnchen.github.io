@@ -15,9 +15,9 @@ export const Theme = {
 
   contentWidth: 50, //ch
   contentWidthLg: 70,
-  bpSm: 600, //px
-  bpMd: 980, //px
-  bpLg: 1400, //px
+  bpSm: 610, //px
+  bpMd: 900, //px
+  bpLg: 1450, //px
 };
 
 const GlobalStyle = createGlobalStyle`

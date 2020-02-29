@@ -6,19 +6,6 @@ const Landing = () => {
     <Wrapper>
       <div>
         <h1>hello. i'm Rowena Chen, and i'm a frontend engineer.</h1>
-        <ul>
-          <li>
-            <a href="https://github.com/rwnchen">/ github</a>
-          </li>
-          <li>
-            <a href="https://www.linkedin.com/in/rowena-chen/">/ linkedin</a>
-          </li>
-          <li>
-            <a href="/Rowena_Chen.pdf" target="blank">
-              / resume
-            </a>
-          </li>
-        </ul>
       </div>
     </Wrapper>
   );
@@ -30,6 +17,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  padding-bottom: 6rem;
 
   height: calc(
     100vh - ${props => props.theme.borderWidth * 2}px -
@@ -46,6 +34,12 @@ const Wrapper = styled.div`
     div {
       width: ${props => props.theme.contentWidth}ch;
       margin-bottom: 5ch;
+    }
+
+    @media (orientation: landscape) {
+      div {
+        margin-bottom: 0;
+      }
     }
   }
 `;
