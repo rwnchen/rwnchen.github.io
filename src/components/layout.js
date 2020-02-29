@@ -82,7 +82,7 @@ class ScrollContainer extends React.Component {
       >
         {this.props.children.slice(0, 2)}
         <Nav
-          scrollPos={this.state.lastScrollPos}
+          scrolled={this.state.lastScrollPos > window.innerHeight * 0.7}
           scrollToTop={this.scrollToTop}
           scrollToProjects={this.scrollToProjects}
         />
@@ -93,9 +93,8 @@ class ScrollContainer extends React.Component {
 }
 
 const Nav = props => {
-  const scrolled = props.scrollPos > window.innerHeight * 0.7;
-  const scrollOnClick = () =>
-    scrolled ? props.scrollToTop() : props.scrollToProjects();
+  const { scrolled, scrollToTop, scrollToProjects } = props;
+  const scrollOnClick = () => (scrolled ? scrollToTop() : scrollToProjects());
   return (
     <NavWrapper scrolled={scrolled}>
       <ul>
