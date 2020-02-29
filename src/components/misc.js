@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { ProjectContainer } from './projects';
-import { ProjectInfo, Metadata } from './singleProject';
+import { ListItem, ProjectInfo, Metadata } from './singleProject';
 
 const Misc = () => {
   return (
@@ -10,19 +10,21 @@ const Misc = () => {
       <h1>/misc</h1>
 
       <ProjectContainer>
-        <ProjectInfo>
-          <h2>What.Hack</h2>
-          <Metadata>
-            <a href="http://www.cs.cornell.edu/~eland/papers/chi2019_whathack.pdf">
-              link
-            </a>{' '}
-            / research paper
-          </Metadata>
-          <p>
-            An educational game designed to teach players to recognize and avoid
-            phishing attempts. Published at CHI 19.
-          </p>
-        </ProjectInfo>
+        <ListItem
+          link={'http://www.cs.cornell.edu/~eland/papers/chi2019_whathack.pdf'}
+          name={'What.Hack'}
+          meta={
+            <>
+              <a href="http://www.cs.cornell.edu/~eland/papers/chi2019_whathack.pdf">
+                link
+              </a>{' '}
+              / research paper
+            </>
+          }
+          desc={
+            'An educational game designed to teach players to recognize and avoid phishing attempts. Published at CHI 19.'
+          }
+        />
       </ProjectContainer>
     </Wrapper>
   );

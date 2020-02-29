@@ -43,10 +43,11 @@ export const ListItem = props => {
   const onclick = props.link
     ? () => window.open(props.link, '__blank')
     : () => null;
+  const cursor = props.link ? 'pointer' : 'default';
   const { name, meta, desc } = props;
 
   return (
-    <Wrapper onClick={onclick}>
+    <Wrapper onClick={onclick} style={{ cursor }}>
       {props.link && (
         <Hover>
           <h2>/</h2>
@@ -64,7 +65,6 @@ export const ListItem = props => {
 const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
-  cursor: pointer;
 `;
 
 export const ProjectInfo = styled.div`
