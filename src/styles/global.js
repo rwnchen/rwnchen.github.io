@@ -15,7 +15,7 @@ export const Theme = {
 
   contentWidth: 50, //ch
   contentWidthLg: 70,
-  bpSm: 610, //px
+  bpSm: 630, //px
   bpMd: 900, //px
   bpLg: 1450, //px
 };
@@ -49,12 +49,12 @@ const GlobalStyle = createGlobalStyle`
   a, a:hover, a:visited {
     text-decoration: none;
     font-family: 'Fira Code', monospace;
+    transition: color ${props => props.theme.transitions};
   }
 
   a, a:visited {
     position: relative;
     color: ${props => props.theme.accentBright};
-    transition: color ${props => props.theme.transitions};
 
     &:hover {
       color: ${props => props.theme.accentAlt} !important;

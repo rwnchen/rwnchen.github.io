@@ -17,12 +17,16 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding-bottom: 6rem;
-
-  height: calc(
+  /* padding-bottom: 6rem; */
+  margin-bottom: 0 !important;
+  min-height: calc(
     100vh - ${props => props.theme.borderWidth * 2}px -
-      ${props => props.theme.containerPadding * 2}rem
+      ${props => props.theme.containerPadding * 2}rem - 6rem - 5ch
   );
+
+  h1 {
+    margin: 0;
+  }
 
   && a {
     color: ${props => props.theme.accentSub};
@@ -30,10 +34,15 @@ const Wrapper = styled.div`
 
   @media (min-width: ${props => props.theme.bpSm}px) {
     margin-left: 5ch !important;
+    /* padding-bottom: calc(6rem + 5ch); */
+
+    min-height: calc(
+      100vh - ${props => props.theme.borderWidth * 2}px -
+        ${props => props.theme.containerPadding * 2}rem - 6rem - 10ch
+    );
 
     div {
       width: ${props => props.theme.contentWidth}ch;
-      margin-bottom: 5ch;
     }
 
     @media (orientation: landscape) {

@@ -63,7 +63,7 @@ class ScrollContainer extends React.Component {
   scrollToProjects = () => {
     console.log('here');
     this.container.current.scrollTo({
-      top: 1.4 * window.innerHeight,
+      top: 1.3 * window.innerHeight,
       left: 0,
       behavior: 'smooth',
     });
@@ -76,12 +76,13 @@ class ScrollContainer extends React.Component {
         onScroll={this.onScroll}
         direction={this.state.scrollDir}
       >
+        {this.props.children.slice(0, 2)}
         <Nav
           scrollPos={this.state.lastScrollPos}
           scrollToTop={this.scrollToTop}
           scrollToProjects={this.scrollToProjects}
         />
-        {this.props.children}
+        {this.props.children.slice(2)}
       </StyledScrollContainer>
     );
   }
@@ -174,16 +175,12 @@ const StyledScrollContainer = styled.div`
 `;
 
 const NavWrapper = styled.div`
-  position: fixed;
-  bottom: 1ch;
-
-  margin: 0;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
   max-height: 100%;
   min-height: 0px;
-
-  && a {
-    color: ${props => props.theme.accentSub} !important;
-  }
 
   ul {
     height: ${props => (props.scrolled ? '0' : '6')}rem;
@@ -191,6 +188,10 @@ const NavWrapper = styled.div`
     opacity: ${props => (props.scrolled ? '0' : '1')};
     overflow: hidden;
     transition: all ${props => props.theme.transitions};
+  }
+
+  @media (min-width: ${props => props.theme.bpSm}px) {
+    margin-left: 5ch;
   }
 `;
 
@@ -200,18 +201,26 @@ const ArrowContainer = styled.div`
 
   svg {
     width: 100%;
-    animation: ${props => changeColor(props.scrolled, props.theme)} 2s linear
-      alternate infinite;
+    animation: ${props => changeColor(true, props.theme)} 2s linear alternate
+      infinite;
+
     transform: rotate(${props => (props.scrolled ? 180 : 0)}deg);
     transition: all ${props => props.theme.transitions};
   }
+
+  &:hover {
+    svg {
+      fill: ${props => props.theme.accentAlt};
+      animation: ${props => changeColor(false, props.theme)} 2s linear infinite;
+    }
+  }
 `;
 
-const changeColor = (scrolled, theme) => keyframes`
+const changeColor = (playAnim, theme) => keyframes`
     from {
-      fill: ${scrolled ? theme.accentAlt : theme.accentSub};
+      fill: ${playAnim ? theme.accentAlt : theme.accentSub};
     }
     to {
-      fill: ${scrolled ? theme.accentBright : theme.accentSub};
+      fill: ${playAnim ? theme.accentBright : theme.accentSub};
     }
   `;
