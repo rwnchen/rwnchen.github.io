@@ -20,21 +20,6 @@ const Project = props => {
       desc={p.description}
     />
   );
-
-  // return (
-  //   <Wrapper onClick={() => window.open(p.link, '__blank')}>
-  //     <Hover>
-  //       <h2>/</h2>
-  //     </Hover>
-  //     <ProjectInfo>
-  //       <h2>{p.name}</h2>
-  //       <Metadata>
-  //         <a href={p.link}>link</a> / {p.year} / {p.platform} / {p.role}
-  //       </Metadata>
-  //       <p>{p.description}</p>
-  //     </ProjectInfo>
-  //   </Wrapper>
-  // );
 };
 
 export default Project;

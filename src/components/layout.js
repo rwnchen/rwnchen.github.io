@@ -203,6 +203,8 @@ const NavWrapper = styled.div`
 
   @media (min-width: ${props => props.theme.bpMd}px) {
     top: 5ch;
+    width: calc(100% - 50ch - 10vw);
+
     ul {
       height: 15rem !important;
       opacity: 1;
@@ -233,6 +235,7 @@ const Name = styled.li`
 
   @media (min-width: ${props => props.theme.bpMd}px) {
     max-height: ${props => (props.scrolled ? '6' : '0')}rem;
+    transition: all ${props => props.theme.transition};
   }
 `;
 
