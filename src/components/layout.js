@@ -5,7 +5,7 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { ThemeProvider, keyframes } from 'styled-components';
 
@@ -69,7 +69,6 @@ class ScrollContainer extends React.Component {
   };
 
   scrollToProjects = () => {
-    console.log('here');
     this.container.current.scrollTo({
       top: 1.3 * window.innerHeight,
       left: 0,
@@ -147,8 +146,8 @@ const StyledScrollContainer = styled.div`
   background-color: #f5fdff;
 
   overflow-y: scroll;
-  scroll-snap-type: y
-    ${props => (props.direction === 'down' ? 'mandatory' : 'proximity')};
+  /* scroll-snap-type: y
+    ${props => (props.direction === 'down' ? 'mandatory' : 'proximity')}; */
 
   > * {
     margin-top: ${props => props.theme.containerPadding}rem;
@@ -183,30 +182,25 @@ const NavWrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   position: sticky;
-  top: -9rem;
-  height: 12rem;
+  top: 1rem;
   min-height: 0;
+  max-height: 33vh;
   scroll-margin: -100vh;
+  width: 12ch;
 
   ul {
-    height: ${props => (props.scrolled ? '0' : '7')}rem;
     opacity: ${props => (props.scrolled ? '0' : '1')};
     overflow: hidden;
     transition: all ${props => props.theme.transitions};
   }
 
   @media (min-width: ${props => props.theme.bpSm}px) {
-    top: -6rem;
     margin-left: 5ch;
     scroll-margin: -60vh;
   }
 
   @media (min-width: ${props => props.theme.bpMd}px) {
-    top: 5ch;
-    width: calc(100% - 50ch - 10vw);
-
     ul {
-      height: 15rem !important;
       opacity: 1;
     }
 
@@ -214,6 +208,10 @@ const NavWrapper = styled.div`
       color: ${props =>
         props.scrolled ? props.theme.accentSub : props.theme.accentBright};
     }
+  }
+
+  @media (max-width: ${props => props.theme.bpMd}px) {
+    ${props => (props.scrolled ? 'max-height: 0rem' : '')}
   }
 
   @media (min-width: ${props => props.theme.bpLg}px) {
@@ -231,11 +229,15 @@ const Name = styled.li`
   font-size: 1.4rem;
   font-family: 'Fira Code', monospace;
   color: ${props => props.theme.accentBright};
-  transition: all ${props => props.theme.transition};
+  transition: all ${props => props.theme.transitions};
+
+  @media (max-width: ${props => props.theme.bpSm}px) {
+    display: none;
+  }
 
   @media (min-width: ${props => props.theme.bpMd}px) {
-    max-height: ${props => (props.scrolled ? '6' : '0')}rem;
-    transition: all ${props => props.theme.transition};
+    max-height: ${props => (props.scrolled ? '4' : '0')}ex;
+    transition: all ${props => props.theme.transitions};
   }
 `;
 

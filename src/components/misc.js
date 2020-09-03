@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { ProjectContainer } from './projects';
-import { ListItem, ProjectInfo, Metadata } from './singleProject';
+import { ListItem } from './singleProject';
 
 const Misc = () => {
   return (
@@ -11,8 +11,8 @@ const Misc = () => {
 
       <ProjectContainer>
         <ListItem
-          link={'http://www.cs.cornell.edu/~eland/papers/chi2019_whathack.pdf'}
-          name={'What.Hack'}
+          link="http://www.cs.cornell.edu/~eland/papers/chi2019_whathack.pdf"
+          name="What.Hack"
           meta={
             <>
               <a href="http://www.cs.cornell.edu/~eland/papers/chi2019_whathack.pdf">
@@ -21,9 +21,23 @@ const Misc = () => {
               / research paper
             </>
           }
-          desc={
-            'An educational game designed to teach players to recognize and avoid phishing attempts. Published at CHI 19.'
+          desc="An educational game designed to teach players to recognize and avoid phishing attempts. Published at CHI 19."
+        />
+      </ProjectContainer>
+
+      <ProjectContainer>
+        <ListItem
+          link="https://www.ravelry.com/projects/astralturf"
+          name="Knitting"
+          meta={
+            <>
+              <a href="http://www.cs.cornell.edu/~eland/papers/chi2019_whathack.pdf">
+                link
+              </a>{' '}
+              / my ravelry
+            </>
           }
+          desc="I knit stuff. Click to check out the stuff I knit."
         />
       </ProjectContainer>
     </Wrapper>
@@ -39,5 +53,3 @@ const Wrapper = styled.div`
     padding-top: 5ch;
   }
 `;
-
-const MiscItem = styled.div``;

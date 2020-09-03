@@ -22,7 +22,7 @@ const Wrapper = styled.div`
   min-height: calc(
     100vh - ${props => props.theme.borderWidth * 2}px -
       ${props => props.theme.containerPadding * 2}rem - 8rem - 5ch
-  );
+  ) !important;
 
   h1 {
     margin: 0;
